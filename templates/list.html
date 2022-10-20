@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<head>
+    <style>
+        body {
+
+            background-image: linear-gradient(to top,rgb(8, 84, 235), white);
+        }
+        form{
+            font-family: "Sans-serif", Helvetica
+
+        }
+    </style>
+
+
+
+</head>
+{% load static %}
+<form method="post">
+    {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Task No.</th>
+                <th scope="col">Task</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in details %}
+            <tr>
+                <th scope="row">{{e.id}}</th>
+                <td><b>{{e.task}}</b></td>
+                <td><b><input type="checkbox" id="Incomplete" name="Incomplete" value="Incomplete" checked>
+                    <label for="Incomplete">Incomplete</label><br>
+                    <input type="checkbox" id="Complete" name="Complete" value="Complete">
+                    <label for="Complete">Complete</label><br></b>
+                </td>
+                <td><a href="delete/{{e.id}}" onclick="return confirm('Do you want to Delete this Task?');">
+                        <button type="button" class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+
+</form>
+{% include 'msg.html' %}
+
+
+
+{% endblock %}

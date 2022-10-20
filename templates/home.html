@@ -1,0 +1,70 @@
+{% extends 'base2.html' %}
+
+
+
+{% block content %}
+
+<head>
+    <style>
+        .c1 {
+            text-align: center;
+            border-radius: 10px;
+            padding: 5;
+
+        }
+
+        .btn1 {
+            text-align: center;
+            padding: 12;
+            }
+        .form{
+            background-image: linear-gradient(to top,rgb(14, 14, 136), white);
+			border-radius: 25px;
+			font-size: 20px;
+			padding: 50px;
+			position: absolute;
+			left: 480px;
+			top: 150px;
+			font-family: "Sans-serif", Helvetica;
+        }
+        .header{
+            
+            text-align: center;
+            font-size: 30px;
+            font-style: italic;
+            font-family: "Sans-serif", Helvetica
+        }
+        body  {
+            background: url("static/bg1.jpeg");
+            background-repeat: no-repeat;
+            background-size: 1400px 650px;
+            
+            }
+
+
+        
+        
+    </style>
+</head>
+<body>
+{% load static %}
+
+<form method="post" class="form">
+    {% csrf_token %}
+    <div class="header" style="color: rgba(0, 30, 255, 0.938);">My ToDo Task</div><hr>
+    <div class="c1">
+        {{form}}
+    </div>
+    <div class="btn1">
+        <input type="submit" value="Save" class="btn btn-success">
+    </div>
+
+    
+</form>
+{% include 'msg.html' %}
+</body>
+
+
+
+
+{% endblock %}
